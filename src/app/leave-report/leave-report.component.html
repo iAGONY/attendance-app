@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="jumbotron">
+        <p>{{tittle}}</p>
+        <p>Total alloted Leave : {{leaveReport.totalAllotedLeave}} </p>
+        <button class="btn btn-primary" type="submit" (click)="getReport()">Current Leave Report</button>
+        <button class="btn btn-primary" type="submit" (click)="getPreviouseYearReport()">Previouse Year Leave Report</button>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Month</th>
+                <th scope="col">Leave Taken</th>
+                <th scope="col">Extra Leave Taken</th>
+                <th scope="col">Added Leave</th>
+                <th scope="col">Available Leave</th>
+                <th scope="col">Unpaid Leave</th>
+                <th scope="col">Salary</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of leaveReport.leaveReportDtos; let i=index" >
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{report.month}}</td>
+                    <td>{{report.leaveTaken }}</td>
+                    <td>{{report.extraLeaveTaken}}</td>
+                    <td>{{report.addedLeave}}</td>
+                    <td>{{report.availableLeave}}</td>
+                    <td>{{report.unpaidLeave}}</td>
+                    <td>{{report.monthlySalary | number}}</td>
+                  </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

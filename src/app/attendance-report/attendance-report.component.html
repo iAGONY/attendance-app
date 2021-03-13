@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="jumbotron">
+        <p>{{tittle}}</p>
+        <button class="btn btn-primary" type="submit" (click)="getReport()">Current Attendance Report</button>
+        <button class="btn btn-primary" type="submit" (click)="getPreviouseYearReport()">Previouse Year Attendance Report</button>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of attendanceReport; let i=index" >
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{report.requestedDate | date}}</td>
+                    <td [ngClass]="{'text-danger' : report.status == 'ON_LEAVE'}">{{report.status }}</td>
+                  </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
